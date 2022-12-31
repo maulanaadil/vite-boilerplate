@@ -1,12 +1,15 @@
-import React from 'react';
-import reactLogo from './assets/react.svg';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Spinner from './components/spinner';
+import BaseRoute from './routes';
 
 function App() {
   return (
-    <div className="bg-slate-800 w-full h-screen flex flex-col gap-8 items-center justify-center">
-      <img className="animate-spin-slow w-44 h-44" src={reactLogo} alt="React Logo" />
-      <p className="text-2xl text-white font-medium">React Vite</p>
-    </div>
+    <Suspense fallback={<Spinner />}>
+      <Router>
+        <BaseRoute />
+      </Router>
+    </Suspense>
   );
 }
 
